@@ -154,15 +154,10 @@ And configure the `terraform` provider in `brooklyn.properties`:
 ## Build Docker image
 
 ```bash
-export MAJOR=0.12.0
-export RC_NUMBER=rc3
-export VERSION=${MAJOR}-${RC_NUMBER}
-
-export BROOKLYN_ARTIFACT_URL=https://dist.apache.org/repos/dist/dev/brooklyn/apache-brooklyn-${VERSION}/apache-brooklyn-${VERSION}-1.noarch.rpm
-docker build -t brooklyn-terraform:latest --build-arg AMP_RPM_URL=${BROOKLYN_ARTIFACT_URL} \
+export BROOKLYN_ARTIFACT_URL=https://dist.apache.org/repos/dist/dev/brooklyn/apache-brooklyn-0.12.0-rc3/apache-brooklyn-0.12.0-rc3-bin.tar.gz
+docker build -t brooklyn-terraform:latest --build-arg AMP_TGZ_URL=${BROOKLYN_ARTIFACT_URL} \
 --build-arg ADDITIONAL_BOMS=https://raw.githubusercontent.com/andreaturli/brooklyn-terraform/master/catalog.bom \
---build-arg DROPINS_JARS="https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=io.cloudsoft.terraform&a=brooklyn-terraform&v=0.12.0-SNAPSHOT&e=jar" \ 
-.
+--build-arg DROPINS_JARS="https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=io.cloudsoft.terraform&a=brooklyn-terraform&v=0.12.0-SNAPSHOT&e=jar" .
 ```
 
 ### Run Docker Image

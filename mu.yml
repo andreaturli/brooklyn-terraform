@@ -1,0 +1,15 @@
+namespace: tf
+environments:
+  - name: acceptance
+    provider: ecs-fargate
+  - name: production
+    provider: ecs-fargate
+service:
+  name: br-tf
+  port: 80
+  pathPatterns:
+  - /*
+  pipeline:
+    source:
+      provider: GitHub
+      repo: andreaturli/brooklyn-terraform
